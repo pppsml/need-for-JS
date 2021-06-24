@@ -8,9 +8,36 @@
 
 <body>
     <div class="game">
-        <div class="score"></div>
-        <div class="start">Чтобы начать игру, кликните сюда!</div>
-        <div class="gameArea"></div>
+        <div class="score_container hide">
+            <div class="score_inner">
+                <div class="score"></div>
+                <!-- <div class="score_record"></div> -->
+            </div>
+        </div>
+        <div class="start__menu slideDown">
+            <div class="start__menu-container">
+
+                <div class="difficulty">
+                    <p class="difficulty__title">Выберите уровень сложности</p>
+                    <p class="difficulty__subtitle">(по умолчанию средний)</p>
+                    <button class="difficulty__button easy">Легкий</button>
+                    <button class="difficulty__button medium">Средний</button>
+                    <button class="difficulty__button hard">Сложный</button>
+                    <p class="difficulty-selected"></p>
+                </div>
+
+                <div class="start">Начать игру</div>
+            </div> <!-- /.start__menu-container -->
+        </div> <!-- /.start__menu -->
+        <div class="gameArea hide"></div>
+    </div>
+
+    <div class="record_alert__wrapper hide">
+        <div class="close">
+            <span></span>
+        </div>
+        <div class="record_alert slideDown">
+        </div>
     </div>
 </body>
 

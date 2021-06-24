@@ -42,19 +42,15 @@ table {
 	border-spacing: 0;
 }
 
-
-
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .car, .enemy {
     width: 50px;
     height: 100px;
-    background: transparent url(./image/player.png) center / cover no-repeat;
+    background: rgba(0, 0, 0, 0) url(./image/player.png) center / cover no-repeat;
     position: absolute;
-    left: 125px;
-    bottom: 10px;
 }
 
 .gameArea {
@@ -72,4 +68,186 @@ table {
     height: 50px;
     background-color: #fff;
     left: 145px;
+}
+
+.start__menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    background: #f7f7f7;
+    text-align: center;
+    border: 2px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 201;
+}
+
+.difficulty {
+    padding: 20px 0;
+    border-bottom: 2px solid #333;
+}
+
+.difficulty p {
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+.difficulty__title {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.difficulty__subtitle {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.difficulty-selected {
+    font-size: 1rem;
+    color: #999;
+}
+
+.difficulty__button {
+    cursor: pointer;
+    width: 100px;
+    padding: .5rem 0;
+    margin: 0 5px 15px;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #fff;
+    background-color: #333;
+    outline: none;
+    border: 1px solid #333;
+    border-radius: 4px;
+    transition: all .2s linear;
+}
+
+.difficulty__button.active {
+    color: #333;
+    background-color: #fff;
+}
+
+.difficulty__button:hover {
+    color: #333;
+    background-color: #fff;
+    border-color: #999;
+}
+
+.start {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    background: #333;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 500;
+    transition: all .2s linear;
+    z-index: 200;
+}
+
+.start:hover {
+    color: #333;
+    background: #fff;
+}
+
+.score_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    z-index: 200;
+    font-size: 1.5rem;
+    color: skyblue;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+.score_inner {
+    display: flex;
+    width: 300px;
+    padding: 1rem 0;
+}
+
+.score_inner div {
+    flex: 1 1 0;
+}
+
+
+.record_alert__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 33, 33, .6);
+    z-index: 500;
+}
+
+.record_alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 209px;
+    background: #f7f7f7;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid #333;
+    border-radius: 10px;
+    z-index: 501;
+}
+
+.close{
+    position: absolute;
+    padding: 18px 0;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    transform: rotate(45deg);
+}
+
+.close span:after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    transform: rotate(90deg);
+}
+
+.slideDown {
+    animation-name: slideDowm;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slideDowm {
+    from {top: -100%;}
+    to {top: 50%;}
 }
