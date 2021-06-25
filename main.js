@@ -1,3 +1,5 @@
+const HEIGHT_ELEM = 100;
+
 const score        = document.querySelector('.score'),
     scoreContainer = document.querySelector('.score_container'),
     scoreRecord    = document.querySelector('.score_record'),
@@ -84,37 +86,40 @@ function random(num) {
 }
 
 function getQuantityElements(heightElement) {
-    return document.documentElement.clientHeight / heightElement + 1
+    return (gameArea.offsetHeight / heightElement) + 1
 };
 
 function startGame() {
+    gameArea.style.minHeight = ''
+    gameArea.style.minHeight = Math.floor((document.documentElement.clientHeight - (scoreContainer.offsetHeight + 40)) / HEIGHT_ELEM) * HEIGHT_ELEM;
 
     gameArea.innerHTML = '';
     startMenu.classList.add('hide')
     scoreContainer.classList.remove('hide');
     gameArea.classList.remove('hide');
 
-    for (let i = 0; i < getQuantityElements(100); i++) {
+    for (let i = 0; i < getQuantityElements(HEIGHT_ELEM); i++) {
         const line = document.createElement('div');
         line.classList.add('line');
-        line.style.top = (i * 100) + 'px';
-        line.y = (i * 100);
-        gameArea.appendChild(line);
+        line.style.top = (i * HEIGHT_ELEM) + 'px';
+        line.style.height = (HEIGHT_ELEM / 2) + 'px';
+        line.y = (i * HEIGHT_ELEM);
+        gameArea.append(line);
     };
 
-    for (let i = 0; i < getQuantityElements(100 * setting.traffic); i++) {
+    for (let i = 0; i < getQuantityElements(HEIGHT_ELEM * setting.traffic); i++) {
         const enemy = document.createElement('div');
         enemy.classList.add('enemy');
-        enemy.y = -100 * setting.traffic * (i + 1);
+        enemy.y = -HEIGHT_ELEM * setting.traffic * (i + 1);
         enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
         enemy.style.top = enemy.y + 'px';
         enemy.style.background = 'rgba(0, 0, 0, 0) url(./image/' + enemyStyles[random(enemyStyles.length)] + '.png) center / cover no-repeat';
-        gameArea.appendChild(enemy);
+        gameArea.append(enemy);
     };
 
     setting.score = 0
     setting.start = true;
-    gameArea.appendChild(car);
+    gameArea.append(car);
     car.style.left = ((gameArea.offsetWidth/2) - (car.offsetWidth/2)) + 'px';
     car.style.top = 'auto'
     car.style.bottom = '10px';
@@ -174,8 +179,8 @@ function moveRoad() {
     lines.forEach(function(line) {
         line.y += setting.speed * 1.5;
         line.style.top = line.y + 'px';
-        if (line.y >= document.documentElement.clientHeight) {
-            line.y = -100;
+        if (line.y >= gameArea.offsetHeight) {
+            line.y = -HEIGHT_ELEM;
         }
     });
 };
@@ -185,10 +190,10 @@ function moveEnemy() {
     enemy.forEach(function(item){
         let carRect = car.getBoundingClientRect();
         let enemyRect = item.getBoundingClientRect();
-        if (carRect.top <= enemyRect.bottom &&
-            carRect.right >= enemyRect.left &&
-            carRect.left <= enemyRect.right &&
-            carRect.bottom >= enemyRect.top) {
+        if (carRect.top+2 <= enemyRect.bottom-2 &&
+            carRect.right-5 >= enemyRect.left+2 &&
+            carRect.left+5 <= enemyRect.right-2 &&
+            carRect.bottom-2 >= enemyRect.top+2) {
                 setting.start = false;
 
                 audio.pause();
@@ -212,8 +217,8 @@ function moveEnemy() {
         item.y += setting.speed / 2;
         item.style.top = item.y + 'px';
 
-        if (item.y >= document.documentElement.clientHeight) {
-            item.y = -100 * setting.traffic;
+        if (item.y >= gameArea.offsetHeight) {
+            item.y = -HEIGHT_ELEM * setting.traffic;
             item.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
             item.style.background = 'rgba(0, 0, 0, 0) url(./image/' + enemyStyles[random(enemyStyles.length)] + '.png) center / cover no-repeat';
         }

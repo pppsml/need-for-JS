@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    font-family: sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -55,7 +56,6 @@ table {
 
 .gameArea {
     width: 300px;
-    height: 100%;
     position: relative;
     margin: auto;
     background: #222;
@@ -90,7 +90,6 @@ table {
 }
 
 .difficulty p {
-    font-family: sans-serif;
     font-weight: 500;
 }
 
@@ -112,13 +111,13 @@ table {
 
 .difficulty__button {
     cursor: pointer;
-    width: 100px;
-    padding: .5rem 0;
+    min-width: 100px;
+    padding: .5rem;
     margin: 0 5px 15px;
     font-size: 1rem;
-    font-family: sans-serif;
     font-weight: 500;
     color: #fff;
+    font-family: inherit;
     background-color: #333;
     outline: none;
     border: 1px solid #333;
@@ -140,16 +139,22 @@ table {
 .start {
     width: 100%;
     margin: 0;
-    padding: 1rem 0;
+    padding: 1rem;
     text-align: center;
     color: #fff;
     font-size: 1.5rem;
     background: #333;
     cursor: pointer;
-    font-family: sans-serif;
     font-weight: 500;
+    font-family: inherit;
     transition: all .2s linear;
     z-index: 200;
+    border: 0;
+    outline: none;
+}
+
+.start:focus {
+    outline: none;
 }
 
 .start:hover {
@@ -158,29 +163,28 @@ table {
 }
 
 .score_container {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0;
-    left: 0;
     width: 100%;
+    height: 60px;
     background: #222;
     z-index: 200;
     font-size: 1.5rem;
     color: skyblue;
     text-align: center;
-    font-family: sans-serif;
     font-weight: 500;
 }
 
 .score_inner {
     display: flex;
+    align-items: center;
     width: 300px;
-    padding: 1rem 0;
+    height: 100%;
 }
 
 .score_inner div {
+    font-family: inherit;
     flex: 1 1 0;
 }
 
